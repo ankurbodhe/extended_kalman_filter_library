@@ -8,6 +8,7 @@ Data :: Data(){
     data_val temp_dat;
     temp_dat.seq = 0;
     temp_dat.timestamp = 0;
+    temp_dat.sensor_number = 0;
     temp_dat.sensor_type = 'X';
     temp_dat.lidar_meas_px = 0.0;
     temp_dat.lidar_meas_py = 0.0;
@@ -45,6 +46,7 @@ void Data::parse_file(string file_name){
             if(dat.sensor_type == 'L'){
 
                 dat.seq++;
+                dat.sensor_number = 1;
                 iss >> dat.lidar_meas_px;
                 iss >> dat.lidar_meas_py;
                 iss >> dat.timestamp;
@@ -57,6 +59,7 @@ void Data::parse_file(string file_name){
             else if(dat.sensor_type == 'R'){
 
                 dat.seq++;
+                dat.sensor_number = 2;
                 iss >> dat.radar_meas_rho;
                 iss >> dat.radar_meas_phi;
                 iss >> dat.meas_rho_dot;
@@ -77,6 +80,11 @@ void Data::parse_file(string file_name){
         }
         file.close();
     }    
+}
+
+data_val Data::access_data_record(int index){
+
+    return data_list[index];
 }
 
 void Data::display_data_records(){

@@ -1,0 +1,9 @@
+System_Model: const_accel #const_vel
+
+Sensor_1: Laser #Radar #IMU #GPS #Odometer
+
+Sensor_2: Radar #Laser #IMU #GPS #Odometer
+
+Sensor_1_measurement_noise:
+
+Sensor_2_measurement_noise:

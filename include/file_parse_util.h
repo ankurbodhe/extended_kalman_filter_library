@@ -12,6 +12,8 @@ struct data_val {
 
     int seq;
     long long timestamp;
+
+    int sensor_number;
     
     char sensor_type;
 
@@ -37,6 +39,7 @@ class Data {
         Data();
         void parse_file(string file_name);
         void display_data_records();
+        data_val access_data_record(int index);
 
 };
 
