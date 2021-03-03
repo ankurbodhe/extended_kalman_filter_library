@@ -5,6 +5,7 @@
 #include <eigen3/Eigen/Eigen>
 #include <file_parse_util.h>
 #include <yaml.h>
+#include <ekf_math_util.h>
 
 
 class ExtendedKalmanFilter 
@@ -51,8 +52,14 @@ class ExtendedKalmanFilter
         // declare a measurement coavariance matrix R_n for Sensor 2
         Eigen::MatrixXd R2_;
 
-        // flag to indicate if jacobian needs to be calculated
-        bool required_jacobian_calc;
+        // flag to indicate if jacobian needs to be calculated for sensor 1
+        bool req_jacobian_calc_s1;
+
+        // flag to indicate if jacobian needs to be calculated for sensor 2
+        bool req_jacobian_calc_s2;
+
+        // varable to access ekf math tools
+        EKFMath tools;
 
         // flag to indicate if state is is initialized with first measurement or not
         bool initialize_state;
@@ -68,11 +75,14 @@ class ExtendedKalmanFilter
         // function to perform the update step
         void update();
 
+        // function to perform the update step
+        void update(char sensor_type);
+
         // function to compute the process uncertainty noise matrix
         Eigen::MatrixXd compute_process_noise_Q(double t);
 
         // function to compute the observation matrix H_n
-        Eigen::MatrixXd compute_observation_matrix_H(data_val data);
+        Eigen::MatrixXd compute_observation_matrix_H(int sensor_id, bool s1_j, bool s2_j);
 
         // function to compute the state transition matrix F
         Eigen::MatrixXd compute_state_transition_F(double t);
@@ -80,7 +90,7 @@ class ExtendedKalmanFilter
         // function to compute the control matrix G
         Eigen::MatrixXd compute_control_matrix_G(double t);
 
-        // function to set the control_vector R
+        // function to set the measurement noise R
         Eigen::MatrixXd set_measurement_noise_R(int sensor_id);
 
         // function to set the control_vector u_
@@ -111,4 +121,4 @@ class ExtendedKalmanFilter
 
 
 
-#endif /* EKF_H_ */
+    #endif /* EKF_H_ */

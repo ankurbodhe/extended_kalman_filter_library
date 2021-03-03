@@ -87,6 +87,11 @@ data_val Data::access_data_record(int index){
     return data_list[index];
 }
 
+long Data::data_record_size() {
+
+    return data_list.size();
+}
+
 void Data::display_data_records(){
 
     cout << " ----- Displaying the data records ----" << std::endl;

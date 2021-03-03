@@ -40,6 +40,7 @@ class Data {
         void parse_file(string file_name);
         void display_data_records();
         data_val access_data_record(int index);
+        long data_record_size();
 
 };
 

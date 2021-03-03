@@ -9,7 +9,8 @@ find_package(yaml-cpp PATHS <yaml-cpp-install-dir>)
 set(sources
     src/main.cpp 
     src/file_parse_util.cpp
-    src/ekf.cpp)
+    src/ekf.cpp
+    src/ekf_math_util.cpp)
 
 include_directories(INCLUDE include )
 

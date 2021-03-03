@@ -4,8 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "/usr/local/include",
-                "/usr/",
+                "/usr/lib",
                 "/opt/ros/noetic/include/",
+                "/home/ankur/vcpkg/packages/matplotlib-cpp_x64-linux/include",
                 "/home/ankur/ankur_projects/extended_kalman_filter_library/include"
             ],
             "defines": [],
